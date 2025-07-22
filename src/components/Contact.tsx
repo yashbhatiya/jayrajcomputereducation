@@ -30,7 +30,7 @@ const Contact = () => {
 
     try {
       // Use your backend's real URL for deployment, or localhost for local dev
-      const response = await fetch("http://localhost:5000/api/contact", {
+      const response = await fetch("https://jayrajcomputereducation.onrender.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
