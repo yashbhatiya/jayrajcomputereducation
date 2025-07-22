@@ -20,7 +20,7 @@ const Header = () => {
           <div className="flex items-center space-x-3">
             <div className="w-14 h-14 rounded-lg flex items-center justify-center overflow-hidden">
               <img
-                src="\Jce Wensite LOGO-01.png"
+                src="https://ibb.co/DPwzYFfB"
                 alt="Jayraj Computer Education"
                 className="w-14 h-14 object-contain"
               />
