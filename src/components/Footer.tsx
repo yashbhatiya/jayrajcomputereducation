@@ -32,7 +32,7 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
 
                 <img
-                  src="public\Jce Wensite LOGO-01.png"
+                  src="/public/JCE Symbol 1 White PNG.png"
                   alt="Jayraj Computer Education"
                   className="w-14 h-14 object-contain"
                 />
