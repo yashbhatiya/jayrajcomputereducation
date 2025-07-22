@@ -42,7 +42,14 @@ const Header = () => {
                 {item.label}
               </a>
             ))}
-            <Button className="btn-hero">Enroll Now</Button>
+            <Button className="btn-hero"
+              onClick={() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >Enroll Now</Button>
           </nav>
 
           {/* Mobile Menu Button */}

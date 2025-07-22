@@ -37,7 +37,14 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 slide-up" style={{ animationDelay: '0.4s' }}>
-            <Button className="btn-hero group">
+            <Button className="btn-hero group"
+              onClick={() => {
+                const coursesSection = document.getElementById('courses');
+                if (coursesSection) {
+                  coursesSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
               Explore Courses
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
