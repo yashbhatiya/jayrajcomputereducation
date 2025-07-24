@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   Code,
   Palette,
@@ -20,16 +19,21 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
-// Custom CSS for card flip and consistent layout
 const styles = `
   .course-card-container {
-    height: 400px; /* Fixed height for consistent card sizes */
+    height: 400px;
+    position: relative;
+    perspective: 1000px;
   }
   .course-card {
-    transition: transform 0.7s ease-in-out;
-    transform-style: preserve-3d;
+    position: relative;
     height: 100%;
     width: 100%;
+    transition: transform 0.7s ease-in-out;
+    transform-style: preserve-3d;
+  }
+  .course-card:hover {
+    transform: rotateY(180deg);
   }
   .course-card-front, .course-card-back {
     backface-visibility: hidden;
@@ -45,9 +49,6 @@ const styles = `
   .course-card-back {
     transform: rotateY(180deg);
   }
-  .flipped {
-    transform: rotateY(180deg);
-  }
   .course-card-front:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   }
@@ -60,13 +61,8 @@ const styles = `
 `;
 
 const Courses = () => {
-  const [flippedCard, setFlippedCard] = useState<number | null>(null);
 
-  const handleMouseLeave = (index: number) => {
-    if (flippedCard === index) {
-      setFlippedCard(null);
-    }
-  };
+
 
   const courses = [
     {
@@ -258,7 +254,6 @@ const Courses = () => {
       <style>{styles}</style>
       <section id="courses" className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Our <span className="gradient-text">Courses</span>
@@ -268,22 +263,13 @@ const Courses = () => {
             </p>
           </div>
 
-          {/* Course Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {courses.map((course, index) => (
-              <div
-                key={course.title}
-                className="course-card-container perspective-1000"
-                onMouseLeave={() => handleMouseLeave(index)}
-              >
-                <div
-                  className={`course-card relative w-full h-full ${flippedCard === index ? 'flipped' : ''}`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  {/* Front of card */}
+              <div key={course.title + index} className="course-card-container">
+                <div className="course-card">
                   <Card className="course-card-front border border-border rounded-lg shadow-md group">
                     <CardHeader className="pb-4">
-                      <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${course.color} p-3 mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                      <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${course.color} p-3 mb-3 group-hover:scale-110`}>
                         <course.icon className="w-6 h-6 text-white" />
                       </div>
                       <CardTitle className="text-lg font-semibold group-hover:text-primary transition-colors">
@@ -304,33 +290,17 @@ const Courses = () => {
                           {course.level}
                         </span>
                       </div>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="w-full bg-primary text-primary-foreground hover:bg-primary-dark transition-all duration-300"
-                        onClick={() => setFlippedCard(index)}
-                      >
+                      <Button variant="outline" size="sm" className="w-full bg-primary text-primary-foreground hover:bg-primary-dark transition-all duration-300">
                         Learn More
                       </Button>
                     </CardContent>
                   </Card>
 
-                  {/* Back of card */}
                   <Card className="course-card-back border border-border rounded-lg shadow-md">
                     <CardHeader className="pb-3">
-                      <div className="flex items-center justify-between">
-                        <CardTitle className="text-lg font-semibold gradient-text">
-                          Course Details
-                        </CardTitle>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="p-1 h-auto"
-                          onClick={() => setFlippedCard(null)}
-                        >
-                          <ArrowLeft className="w-4 h-4" />
-                        </Button>
-                      </div>
+                      <CardTitle className="text-lg font-semibold gradient-text">
+                        Course Details
+                      </CardTitle>
                     </CardHeader>
                     <CardContent className="course-card-content pt-0 space-y-3 text-sm">
                       <div>
@@ -365,10 +335,7 @@ const Courses = () => {
                           <span className="font-medium">{course.details.prerequisites}</span>
                         </div>
                       </div>
-                      <Button
-                        className="w-full bg-primary text-primary-foreground hover:bg-primary-dark mt-4"
-                        size="sm"
-                      >
+                      <Button className="w-full bg-primary text-primary-foreground hover:bg-primary-dark mt-4" size="sm">
                         Enroll Now
                       </Button>
                     </CardContent>
@@ -378,7 +345,6 @@ const Courses = () => {
             ))}
           </div>
 
-          {/* Call to Action */}
           <div className="text-center mt-16">
             <Button className="bg-primary text-primary-foreground hover:bg-primary-dark">
               View All Courses
