@@ -42,7 +42,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-muted-foreground text-sm">
-              Empowering students with cutting-edge computer skills and technology education for over 5 years.
+              Empowering students with cutting-edge computer skills and technology education for over 15 years.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
