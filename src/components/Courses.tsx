@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Code,
   Palette,
@@ -19,39 +20,60 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
+// Custom CSS for card flip and consistent layout
 const styles = `
   .course-card-container {
     height: 400px;
+    width: 100%;
     position: relative;
     perspective: 1000px;
+    -webkit-perspective: 1000px;
   }
+
   .course-card {
-    position: relative;
+    position: absolute;
     height: 100%;
     width: 100%;
-    transition: transform 0.7s ease-in-out;
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transition: transform 0.7s ease-in-out;
+    -webkit-transition: -webkit-transform 0.7s ease-in-out;
   }
-  .course-card:hover {
+
+  .course-card.flipped {
     transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
   }
+
   .course-card-front, .course-card-back {
-    backface-visibility: hidden;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     display: flex;
     flex-direction: column;
+    border-radius: 0.5rem;
+    overflow: hidden;
   }
+
+  .course-card-front {
+    z-index: 2;
+  }
+
   .course-card-back {
     transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    z-index: 1;
+    background-color: #f0f0f0; /* Temporary distinct background for debugging */
   }
+
   .course-card-front:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   }
+
   .course-card-content {
     flex-grow: 1;
     display: flex;
@@ -61,8 +83,7 @@ const styles = `
 `;
 
 const Courses = () => {
-
-
+  const [flippedCard, setFlippedCard] = useState<number | null>(null);
 
   const courses = [
     {
@@ -254,6 +275,7 @@ const Courses = () => {
       <style>{styles}</style>
       <section id="courses" className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Our <span className="gradient-text">Courses</span>
@@ -263,16 +285,24 @@ const Courses = () => {
             </p>
           </div>
 
+          {/* Course Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {courses.map((course, index) => (
-              <div key={course.title + index} className="course-card-container">
-                <div className="course-card">
-                  <Card className="course-card-front border border-border rounded-lg shadow-md group">
+              <div
+                key={course.title}
+                className="course-card-container"
+              >
+                <div
+                  className={`course-card ${flippedCard === index ? 'flipped' : ''}`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {/* Front of card */}
+                  <Card className="course-card-front border border-border">
                     <CardHeader className="pb-4">
-                      <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${course.color} p-3 mb-3 group-hover:scale-110`}>
+                      <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${course.color} p-3 mb-3`}>
                         <course.icon className="w-6 h-6 text-white" />
                       </div>
-                      <CardTitle className="text-lg font-semibold group-hover:text-primary transition-colors">
+                      <CardTitle className="text-lg font-semibold">
                         {course.title}
                       </CardTitle>
                     </CardHeader>
@@ -290,17 +320,33 @@ const Courses = () => {
                           {course.level}
                         </span>
                       </div>
-                      <Button variant="outline" size="sm" className="w-full bg-primary text-primary-foreground hover:bg-primary-dark transition-all duration-300">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full bg-primary text-primary-foreground hover:bg-primary-dark transition-all duration-300"
+                        onClick={() => setFlippedCard(flippedCard === index ? null : index)}
+                      >
                         Learn More
                       </Button>
                     </CardContent>
                   </Card>
 
-                  <Card className="course-card-back border border-border rounded-lg shadow-md">
+                  {/* Back of card */}
+                  <Card className="course-card-back border border-border">
                     <CardHeader className="pb-3">
-                      <CardTitle className="text-lg font-semibold gradient-text">
-                        Course Details
-                      </CardTitle>
+                      <div className="flex items-center justify-between">
+                        <CardTitle className="text-lg font-semibold gradient-text">
+                          Course Details
+                        </CardTitle>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="p-1 h-auto"
+                          onClick={() => setFlippedCard(null)}
+                        >
+                          <ArrowLeft className="w-4 h-4" />
+                        </Button>
+                      </div>
                     </CardHeader>
                     <CardContent className="course-card-content pt-0 space-y-3 text-sm">
                       <div>
@@ -335,7 +381,10 @@ const Courses = () => {
                           <span className="font-medium">{course.details.prerequisites}</span>
                         </div>
                       </div>
-                      <Button className="w-full bg-primary text-primary-foreground hover:bg-primary-dark mt-4" size="sm">
+                      <Button
+                        className="w-full bg-primary text-primary-foreground hover:bg-primary-dark mt-4"
+                        size="sm"
+                      >
                         Enroll Now
                       </Button>
                     </CardContent>
@@ -345,6 +394,7 @@ const Courses = () => {
             ))}
           </div>
 
+          {/* Call to Action */}
           <div className="text-center mt-16">
             <Button className="bg-primary text-primary-foreground hover:bg-primary-dark">
               View All Courses

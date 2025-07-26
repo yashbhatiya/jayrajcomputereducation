@@ -55,7 +55,7 @@ const About = () => {
 
             {/* Mission & Vision */}
             <div className="space-y-8 fade-in" style={{ animationDelay: '0.4s' }}>
-              <div className="course-card fade-in">
+              <div className="rounded-lg border bg-black  p-6 shadow-sm Mission-card">
                 <Target className="w-8 h-8 text-primary mb-4" />
                 <h4 className="text-xl font-semibold mb-3">Our Mission</h4>
                 <p className="text-muted-foreground">
@@ -64,7 +64,7 @@ const About = () => {
                 </p>
               </div>
 
-              <div className="course-card fade-in">
+              <div className="rounded-lg border bg-black p-6 shadow-sm Vision-card">
                 <Trophy className="w-8 h-8 text-primary mb-4" />
                 <h4 className="text-xl font-semibold mb-3">Our Vision</h4>
                 <p className="text-muted-foreground">
@@ -77,7 +77,7 @@ const About = () => {
 
           {/* Features grid */}
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center course-card fade-in" style={{ animationDelay: '0.5s' }}>
+            <div className="rounded-lg border text-white bg-black shadow-sm text-center p-6 Faculty-card fade-in" style={{ animationDelay: '0.5s' }}>
               <BookOpen className="w-12 h-12 text-primary mx-auto mb-4" />
               <h4 className="text-xl font-semibold mb-3">Expert Faculty</h4>
               <p className="text-muted-foreground">
@@ -85,7 +85,7 @@ const About = () => {
               </p>
             </div>
 
-            <div className="text-center course-card fade-in" style={{ animationDelay: '0.6s' }}>
+            <div className="rounded-lg border text-white bg-black shadow-sm text-center p-6 class-size-card fade-in" style={{ animationDelay: '0.6s' }}>
               <Users className="w-12 h-12 text-primary mx-auto mb-4" />
               <h4 className="text-xl font-semibold mb-3">Small Class Sizes</h4>
               <p className="text-muted-foreground">
@@ -93,7 +93,7 @@ const About = () => {
               </p>
             </div>
 
-            <div className="text-center course-card fade-in" style={{ animationDelay: '0.7s' }}>
+            <div className="rounded-lg border text-white bg-black shadow-sm text-center p-6 timing-card fade-in" style={{ animationDelay: '0.7s' }}>
               <Clock className="w-12 h-12 text-primary mx-auto mb-4" />
               <h4 className="text-xl font-semibold mb-3">Flexible Timing</h4>
               <p className="text-muted-foreground">
