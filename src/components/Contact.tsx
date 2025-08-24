@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, Loader2 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
@@ -15,6 +15,8 @@ const Contact = () => {
     message: ''
   });
 
+  const [loading, setLoading] = useState(false);
+
   type ContactFormData = {
     name: string;
     email: string;
@@ -27,9 +29,9 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true); // start loader
 
     try {
-      // Use your backend's real URL for deployment, or localhost for local dev
       const response = await fetch("https://jayrajcomputereducation.onrender.com/api/contact/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -41,13 +43,7 @@ const Contact = () => {
           title: "Inquiry Submitted!",
           description: "Thank you for your interest. We'll contact you soon!",
         });
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          course: '',
-          message: ''
-        });
+        setFormData({ name: '', email: '', phone: '', course: '', message: '' });
       } else {
         const error = await response.json();
         toast({
@@ -62,8 +58,11 @@ const Contact = () => {
         description: "Could not reach the server, please try again later.",
         variant: "destructive"
       });
+    } finally {
+      setLoading(false); // stop loader
     }
   };
+
 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -247,9 +246,22 @@ const Contact = () => {
                   />
                 </div>
 
-                <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700">
-                  <Send className="w-4 h-4 mr-2" />
-                  Send Message
+                <Button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 flex items-center justify-center"
+                >
+                  {loading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 mr-2" />
+                      Send Message
+                    </>
+                  )}
                 </Button>
               </form>
             </div>
