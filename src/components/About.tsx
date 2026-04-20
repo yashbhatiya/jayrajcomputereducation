@@ -1,8 +1,8 @@
 import { Users, Award, Target, BookOpen, Clock, Trophy, CheckCircle2, Sparkles } from 'lucide-react';
 
 const stats = [
-  { value: '15+', label: 'Years of Excellence', color: 'from-blue-600 to-cyan-500' },
-  { value: '1000+', label: 'Students Trained', color: 'from-cyan-500 to-teal-400' },
+  { value: '20', label: 'Years of Excellence', color: 'from-blue-600 to-cyan-500' },
+  { value: '5000+', label: 'Students Trained', color: 'from-cyan-500 to-teal-400' },
   { value: '13+', label: 'Courses Offered', color: 'from-blue-500 to-indigo-500' },
   { value: '95%', label: 'Placement Rate', color: 'from-indigo-500 to-blue-600' },
 ];
@@ -83,22 +83,7 @@ const About = () => {
             </p>
           </div>
 
-          {/* ── Stats row ── */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
-            {stats.map((s) => (
-              <div
-                key={s.label}
-                className="relative group rounded-2xl border border-border/60 bg-card hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 overflow-hidden p-6 text-center"
-              >
-                {/* top accent line */}
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${s.color}`} />
-                <p className={`text-3xl font-extrabold bg-gradient-to-r ${s.color} bg-clip-text text-transparent mb-1`}>
-                  {s.value}
-                </p>
-                <p className="text-sm text-muted-foreground font-medium">{s.label}</p>
-              </div>
-            ))}
-          </div>
+
 
           {/* ── Story + Mission/Vision ── */}
           <div className="grid lg:grid-cols-2 gap-12 items-start mb-20">
@@ -117,11 +102,11 @@ const About = () => {
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
                   Founded with a vision to democratize computer education, Jayraj Computer Education
-                  has been at the forefront of technical training for over <strong className="text-foreground">15 years</strong>.
+                  has been at the forefront of technical training for over <strong className="text-foreground">20 years</strong>.
                   We believe quality education should be accessible to everyone, regardless of background.
                 </p>
                 <p>
-                  We've successfully trained <strong className="text-foreground">1,000+ students</strong>, helping
+                  We've successfully trained <strong className="text-foreground">5,000+ students</strong>, helping
                   them unlock better career opportunities and achieve their professional goals — from basic
                   computer literacy all the way to advanced programming and design.
                 </p>
