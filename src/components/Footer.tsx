@@ -118,10 +118,10 @@ const Footer = () => {
               © {currentYear} Jayraj Computer Education. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm">
+              <a href="/privacy-policy" className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm">
                 Privacy Policy
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm">
+              <a href="/terms-of-service" className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm">
                 Terms of Service
               </a>
             </div>
