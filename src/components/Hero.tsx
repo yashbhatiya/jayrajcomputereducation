@@ -31,12 +31,12 @@ const Hero = () => {
 
       {/* ── Ambient glows ── */}
       {/* Top-center glow */}
-      <div className="absolute top-[-80px] left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-[-80px] left-1/2 -translate-x-1/2 w-[600px] max-w-[90vw] h-[400px] bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
       {/* Bottom glows intentionally overflow into About — no overflow-hidden on section */}
-      <div className="absolute bottom-[-120px] left-0 w-[400px] h-[400px] bg-cyan-400/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-[-80px] right-0 w-[320px] h-[320px] bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-[-120px] left-0 w-[300px] max-w-[50vw] h-[400px] bg-cyan-400/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-[-80px] right-0 w-[250px] max-w-[40vw] h-[320px] bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="container mx-auto px-4 py-24 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
 
           {/* ── Trust badge ── */}
@@ -65,7 +65,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
             <button
               onClick={() => scrollTo('courses')}
-              className="group inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-semibold px-7 py-3.5 rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 hover:-translate-y-0.5"
+              className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-semibold px-6 py-3 sm:px-7 sm:py-3.5 rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 hover:-translate-y-0.5 text-sm sm:text-base"
             >
               Explore Courses
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -73,7 +73,7 @@ const Hero = () => {
 
             <button
               onClick={() => scrollTo('contact')}
-              className="inline-flex items-center gap-2 border border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400 font-semibold px-7 py-3.5 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-all duration-300"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400 font-semibold px-6 py-3 sm:px-7 sm:py-3.5 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-all duration-300 text-sm sm:text-base"
             >
               Enquire Now
             </button>

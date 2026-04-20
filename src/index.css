@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prevent horizontal scrolling */
+html,
+body {
+  overflow-x: hidden;
+}
+
 /* Design system for Jayraj Computer Education - Tech-focused with professional blue gradients */
 
 @layer base {
@@ -39,11 +45,11 @@
     --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(236 72% 79%));
     --gradient-secondary: linear-gradient(135deg, hsl(240 10% 3.9%), hsl(240 4.8% 15.9%));
     --gradient-hero: linear-gradient(135deg, hsl(217 91% 60% / 0.1), hsl(236 72% 79% / 0.1));
-    
+
     --shadow-elegant: 0 10px 30px -10px hsl(217 91% 60% / 0.3);
     --shadow-card: 0 4px 20px -4px hsl(217 91% 60% / 0.2);
     --shadow-glow: 0 0 40px hsl(217 91% 70% / 0.4);
-    
+
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
@@ -116,30 +122,31 @@
 }
 
 @layer components {
+
   /* Hero button with gradient and hover effects */
   .btn-hero {
     @apply bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold;
     @apply transition-all duration-300 hover:scale-105 hover:shadow-[var(--shadow-glow)];
     @apply transform-gpu will-change-transform;
   }
-  
+
   /* Course card with elegant animations */
   .course-card {
     @apply bg-card/50 backdrop-blur-sm border border-border rounded-xl p-6;
     @apply transition-all duration-300 hover:scale-105 hover:shadow-[var(--shadow-card)];
     @apply transform-gpu will-change-transform cursor-pointer;
   }
-  
+
   /* Gradient text effect */
   .gradient-text {
     @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
   }
-  
+
   /* Fade in animation */
   .fade-in {
     @apply animate-[fadeIn_0.6s_ease-out_forwards];
   }
-  
+
   /* Slide up animation */
   .slide-up {
     @apply animate-[slideUp_0.8s_ease-out_forwards];
@@ -152,32 +159,37 @@
       opacity: 0;
       transform: translateY(20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
-  
+
   @keyframes slideUp {
     from {
       opacity: 0;
       transform: translateY(50px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
-  
+
   @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0px);
     }
+
     50% {
       transform: translateY(-10px);
     }
   }
-  
+
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
@@ -186,15 +198,15 @@
   .perspective-1000 {
     perspective: 1000px;
   }
-  
+
   .preserve-3d {
     transform-style: preserve-3d;
   }
-  
+
   .backface-hidden {
     backface-visibility: hidden;
   }
-  
+
   .rotate-y-180 {
     transform: rotateY(180deg);
   }

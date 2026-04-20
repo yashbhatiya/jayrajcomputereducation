@@ -182,8 +182,8 @@ const TermsAndConditions = () => {
             />
 
             {/* ── Ambient glows ── */}
-            <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-blue-500/10 rounded-full blur-3xl pointer-events-none z-0" />
-            <div className="fixed bottom-0 right-0 w-[400px] h-[300px] bg-cyan-400/8 rounded-full blur-3xl pointer-events-none z-0" />
+            <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[500px] max-w-[80vw] h-[300px] bg-blue-500/10 rounded-full blur-3xl pointer-events-none z-0" />
+            <div className="fixed bottom-0 right-0 w-[300px] max-w-[50vw] h-[300px] bg-cyan-400/8 rounded-full blur-3xl pointer-events-none z-0" />
 
             {/* ── Hero header ── */}
             <div className="relative z-10 pt-16 pb-12 text-center px-4">
@@ -214,7 +214,33 @@ const TermsAndConditions = () => {
             </div>
 
             {/* ── Main layout ── */}
-            <div className="relative z-10 container mx-auto px-4 pb-24 max-w-6xl">
+            <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pb-24 max-w-6xl">
+                {/* Mobile TOC */}
+                <div className="lg:hidden mb-8">
+                    <div className="rounded-2xl border border-border/60 bg-card overflow-hidden">
+                        <div className="h-1 bg-gradient-to-r from-blue-600 to-cyan-500" />
+                        <div className="p-4">
+                            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">
+                                Contents
+                            </p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                {sections.map((s) => (
+                                    <button
+                                        key={s.id}
+                                        onClick={() => scrollToSection(s.id)}
+                                        className="flex items-center gap-2 text-left p-2 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-all"
+                                    >
+                                        <div className={`w-6 h-6 rounded-md ${s.iconBg} flex items-center justify-center shrink-0`}>
+                                            <s.icon className="w-3 h-3 text-white" />
+                                        </div>
+                                        <span className="flex-1 leading-tight text-xs">{s.title}</span>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div className="grid lg:grid-cols-[260px_1fr] gap-10 items-start">
 
                     {/* ── Sticky sidebar TOC ── */}

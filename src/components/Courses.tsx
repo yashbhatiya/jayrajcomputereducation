@@ -237,9 +237,15 @@ const Courses = () => {
         @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500&display=swap');
 
         .course-card-wrap {
-          height: 300px;
+          height: 320px;
           perspective: 1200px;
           width: 100%;
+        }
+
+        @media (max-width: 640px) {
+          .course-card-wrap {
+            height: 300px;
+          }
         }
 
         .course-card-inner {
@@ -416,7 +422,7 @@ const Courses = () => {
         }
       `}</style>
 
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
@@ -459,11 +465,7 @@ const Courses = () => {
 
         {/* Grid */}
         <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
-            gap: '20px',
-          }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
         >
           {visibleCourses.map((course, index) => {
             const Icon = course.icon;
