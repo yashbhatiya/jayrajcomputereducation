@@ -72,7 +72,7 @@ const courses = [
     },
   },
   {
-    title: 'Premiere Pro',
+    title: 'Video Editing',
     description: 'Professional video editing and post-production',
     icon: Video,
     duration: '2 months',
@@ -193,10 +193,10 @@ const courses = [
     accent: '#ff6a00',
     tag: 'Creative',
     details: {
-      overview: 'Complete graphic design course covering Adobe Creative Suite and design principles.',
-      syllabus: ['Design Principles', 'Adobe Photoshop', 'Adobe Illustrator', 'Logo Design', 'Print & Digital Media'],
-      certification: 'Graphic Design Professional',
-      prerequisites: 'Creative mindset and basic computer skills',
+      overview: '3Ds Max course covering 3D modeling, animation, and rendering for games, film, and visualization.',
+      syllabus: ['3Ds Max Basics', 'Modeling', 'Animation', 'Rendering', 'Texturing & Materials'],
+      certification: '3Ds Max Professional',
+      prerequisites: 'Basic computer skills and creative mindset',
     },
   },
   {
