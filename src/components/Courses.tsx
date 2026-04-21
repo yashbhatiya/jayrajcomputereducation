@@ -2,7 +2,7 @@ import { useState } from 'react';
 import {
   Code, Palette, Video, Calculator, Globe, PenTool,
   Database, FileText, BarChart3, Cpu, Monitor, Layers,
-  ArrowLeft, Clock, Star, CheckCircle, Zap
+  ArrowLeft, Clock, Star, CheckCircle, Zap, Cuboid 
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -181,6 +181,22 @@ const courses = [
       syllabus: ['Tally Prime Interface', 'Advanced Accounting', 'GST Returns', 'Banking & Reconciliation', 'Advanced Reports'],
       certification: 'Tally Prime Expert',
       prerequisites: 'Basic Tally knowledge recommended',
+    },
+  },
+  {
+    title: '3Ds Max',
+    description: '3D modeling, animation, and rendering software',
+    icon: Cuboid ,
+    duration: '3 months',
+    level: 'Intermediate',
+    gradient: 'linear-gradient(135deg, #f7b733 0%, #ee0979 100%)',
+    accent: '#ff6a00',
+    tag: 'Creative',
+    details: {
+      overview: 'Complete graphic design course covering Adobe Creative Suite and design principles.',
+      syllabus: ['Design Principles', 'Adobe Photoshop', 'Adobe Illustrator', 'Logo Design', 'Print & Digital Media'],
+      certification: 'Graphic Design Professional',
+      prerequisites: 'Creative mindset and basic computer skills',
     },
   },
   {
