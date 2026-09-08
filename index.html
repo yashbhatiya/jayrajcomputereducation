@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/favicon.png" sizes="180x180">
+
+  <!--
+    These are the default/fallback tags — the ones any crawler or tool sees
+    before JavaScript runs, and what react-helmet-async (src/components/SEO.tsx)
+    overrides per-route once it does. Keep this default matching the
+    homepage's real title/description so there's never a gap. See SEO audit
+    Section 2.1/3.3.
+  -->
+  <title>Computer Classes in Vadodara | Jayraj Computer Education</title>
+  <meta name="description" content="Learn Tally, Python, Web Design, Programming & more at Jayraj Computer Education, Ajwa Road, Vadodara. Practical, certificate-backed courses. Enroll today." />
+  <meta name="author" content="Jayraj Computer Education" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://jayrajcomputers.in/" />
+
+  <meta property="og:title" content="Jayraj Computer Education | Computer Classes in Vadodara" />
+  <meta property="og:description" content="Learn Tally, Python, Web Design, Programming & more at Jayraj Computer Education, Ajwa Road, Vadodara." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jayrajcomputers.in/" />
+  <!--
+    Fixed: this used to point at https://ibb.co/HL0qy4XC, which is the ibb.co
+    VIEWER PAGE, not an actual image file — link previews on WhatsApp/
+    Facebook/Twitter rendered blank as a result (SEO audit Section 2.2).
+    Now self-hosted: your actual logo asset in /public was a 17000×17000px,
+    1.5MB print file — resized down to a proper 512×512 web asset
+    (public/logo.png) instead of relying on a third-party image host
+    (SEO audit Section 3.7).
+  -->
+  <meta property="og:image" content="https://jayrajcomputers.in/logo.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@JayrajComputer" />
+  <meta name="twitter:title" content="Jayraj Computer Education | Computer Classes in Vadodara" />
+  <meta name="twitter:description" content="Learn Tally, Python, Web Design, Programming & more at Jayraj Computer Education, Ajwa Road, Vadodara." />
+  <meta name="twitter:image" content="https://jayrajcomputers.in/logo.png" />
+
+  <!--
+    Site-wide EducationalOrganization + LocalBusiness structured data
+    (SEO audit Section 3.6). Placed as static HTML rather than injected via
+    Helmet so it's guaranteed to be present even for crawlers that don't
+    execute JavaScript, since it never changes per-route.
+    NOTE: keep this in sync with src/data/siteConfig.ts if you change your
+    phone number, address or hours — search for "getOrganizationSchema" in
+    src/lib/schema.ts, which generates the equivalent object for anything
+    that does render client-side.
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["EducationalOrganization", "LocalBusiness"],
+    "name": "Jayraj Computer Education",
+    "url": "https://jayrajcomputers.in",
+    "logo": "https://jayrajcomputers.in/logo.png",
+    "telephone": "+91-97278-94127",
+    "email": "jayrajcomputereducation@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "B-23 Krishna Park Society, Ajwa Road",
+      "addressLocality": "Vadodara",
+      "addressRegion": "Gujarat",
+      "postalCode": "390019",
+      "addressCountry": "IN"
+    },
+    "openingHours": "Mo-Sa 08:00-20:00"
+  }
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
